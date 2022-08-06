@@ -56,7 +56,7 @@
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
         };
-    }
+    };
 
     keymap {
         compatible = "zmk,keymap";
