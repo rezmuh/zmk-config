@@ -76,7 +76,7 @@
             bindings = <
                 &kp ESC        &kp TAB        &kp C_PREV       &kp C_PP        &kp C_FF                 &none    &none        &none        &kp DEL          &kp BSPC 
                 &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &none                    &none    &kp LEFT     &kp DOWN     &kp UP           &kp RIGHT
-                &kp TAB_L      &kp TAB_R      &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none    &none        &kp PG_DN    &kp PG_UP        &none
+                &kp TAB_LT     &kp TAB_RT     &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none    &none        &kp PG_DN    &kp PG_UP        &none
                                                                &none           &none                    &none    &none 
             >;
         };
