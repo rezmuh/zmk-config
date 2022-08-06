@@ -67,7 +67,7 @@
                 &kp Q          &kp W          &kp F        &kp P           &kp B                    &kp J    &kp L        &kp U        &kp Y            &kp SEMI 
                 &as LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &as LSHIFT O
                 &kp Z          &kp X          &kp C        &kp D           &kp V                    &kp K    &kp H        &kp COMMA    &kp DOT          &kp SLASH
-                                                           &mo_tap NAV F24 &kp RET                  &kp SPC  &mo_tap SYM 
+                                                           &mo_tap NAV F24 &kp RET                  &kp SPC  &mo_tap SYM F24
             >;
         };
 
