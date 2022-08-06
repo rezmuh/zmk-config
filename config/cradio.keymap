@@ -19,31 +19,27 @@
     // tapping_term_ms = <200>;
 };
 
+&kscan0 {
+  debounce-period = <14>;
+};
+
 / { 
 
-    combos {
-        combo_bttog {
-            bindings = <&out OUT_TOG>;
-            key_positions = <11 12 13>;
-            layers = <NAV>;
-        };
+    chosen {
+      zmk,battery = &vbatt;
     };
-    
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-nrf-vddh";
+        label = "VBATT";
+    };
+
     behaviors {
         am: alpha_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_MT";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        as: alpha_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_SFT";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
             quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -66,7 +62,7 @@
             label = "BASE";
             bindings = <
                 &kp Q          &kp W          &kp F        &kp P           &kp B                    &kp J    &kp L        &kp U        &kp Y            &kp SEMI 
-                &as LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &as LSHIFT O
+                &am LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &am LSHIFT O
                 &kp Z          &kp X          &kp C        &kp D           &kp V                    &kp K    &kp H        &kp COMMA    &kp DOT          &kp SLASH
                                                            &mo_tap NAV F24 &kp RET                  &kp SPC  &mo_tap SYM F24
             >;
@@ -75,19 +71,19 @@
         nav_layer {
             label = "NAV";
             bindings = <
-                &kp ESC        &bt BT_SEL 0   &kp C_PREV       &kp C_PP        &kp C_FF                 &none    &none        &none        &kp DEL          &kp BSPC 
-                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &bt BT_CLR                    &none    &kp LEFT     &kp DOWN     &kp UP           &kp RIGHT
-                &kp TAB        &kp LG(TAB)    &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none    &none        &kp PG_DN    &kp PG_UP        &none
-                                                               &none           &none                    &none    &none 
+                &kp TAB        &none          &kp C_PREV       &kp C_PP        &kp C_FF                 &kp LS(TAB)    &kp TAB        &none        &kp DEL          &kp BSPC
+                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &bt BT_CLR               &none          &kp LEFT       &kp DOWN     &kp UP           &kp RIGHT
+                &kp ESC        &none          &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none          &none          &kp PG_DN    &kp PG_UP        &none
+                                                               &none           &kp LGUI                 &none          &none 
             >;
         };
 
         sym_layer {
             label = "SYM";
             bindings = <
-                &kp ESC        &none          &kp C_PREV   &kp C_PP        &kp C_FF                 &kp SQT      &kp N7       &kp N8       &kp N9           &kp N0 
+                &kp ESC        &none          &none        &none           &none                    &kp SQT      &kp N7       &kp N8       &kp N9           &kp N0 
                 &kp LSHFT      &kp LCTRL      &kp LALT     &kp LGUI        &none                    &kp BSLH     &kp N4       &kp N5       &kp N6           &kp MINUS
-                &bt BT_CLR     &none          &none        &kp GRAVE       &kp LBKT                 &kp RBKT     &kp N1       &kp N2       &kp N3           &kp EQUAL
+                &none          &none          &none        &kp GRAVE       &kp LBKT                 &kp RBKT     &kp N1       &kp N2       &kp N3           &kp EQUAL
                                                            &none           &none                    &none        &none 
             >;
         };
