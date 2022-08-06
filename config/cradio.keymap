@@ -19,15 +19,15 @@
 };
 
 / { 
-    chosen {
-      zmk,battery = &vbatt;
-    };
 
-    vbatt: vbatt {
-        compatible = "zmk,battery-nrf-vddh";
-        label = "VBATT";
+    combos {
+        combo_bttog {
+            bindings = <&out OUT_TOG>;
+            key_positions = <11 12 13>;
+            layers = <NAV>;
+        };
     };
-
+    
     behaviors {
         am: alpha_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -87,7 +87,7 @@
                 &kp ESC        &none          &kp C_PREV   &kp C_PP        &kp C_FF                 &kp SQT      &kp N7       &kp N8       &kp N9           &kp N0 
                 &kp LSHFT      &kp LCTRL      &kp LALT     &kp LGUI        &none                    &kp BSLH     &kp N4       &kp N5       &kp N6           &kp MINUS
                 &bt BT_CLR     &none          &none        &kp GRAVE       &kp LBKT                 &kp RBKT     &kp N1       &kp N2       &kp N3           &kp EQUAL
-                                                           &none           &none                    &bt BT_CLR   &none 
+                                                           &none           &none                    &none        &none 
             >;
         };
 
