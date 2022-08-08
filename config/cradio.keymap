@@ -4,6 +4,16 @@
  * SPDX-License-Identifier: MIT
  */
 
+
+/*                KEY POSITIONS
+
+  ╭────────────────────╮ ╭────────────────────╮
+  │  0   1   2   3   4 │ │  5   6   7   8   9 │
+  │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
+  │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
+  ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
+              ╰────────╯ ╰────────╯            */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -34,6 +44,14 @@
         label = "VBATT";
     };
 
+    combos {
+        combo_btclr {
+            bindings = <&bt BT_CLR>;
+            key-positons = <20 29>;
+            layers = <NAV>;  
+        }; 
+    };
+    
     behaviors {
         am: alpha_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -43,15 +61,6 @@
             quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-        };
-        mo_tap: mo_with_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MO_WITH_TAP";
-            #binding-cells = <2>;
-            tapping_term_ms = <0>;
-            retro-tap;
-            flavor = "hold-preferred";
-            bindings = <&mo>, <&kp>;
         };
     };
 
@@ -64,17 +73,17 @@
                 &kp Q          &kp W          &kp F        &kp P           &kp B                    &kp J    &kp L        &kp U        &kp Y            &kp SEMI 
                 &am LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &am LSHIFT O
                 &kp Z          &kp X          &kp C        &kp D           &kp V                    &kp K    &kp H        &kp COMMA    &kp DOT          &kp SLASH
-                                                           &mo_tap NAV F24 &kp RET                  &kp SPC  &mo_tap SYM F24
+                                                           &sl NAV         &kp RET                  &kp SPC  &sl SYM
             >;
         };
 
         nav_layer {
             label = "NAV";
             bindings = <
-                &kp TAB        &none          &kp C_PREV       &kp C_PP        &kp C_FF                 &kp LS(TAB)    &kp TAB        &none        &kp DEL          &kp BSPC
-                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &bt BT_CLR               &none          &kp LEFT       &kp DOWN     &kp UP           &kp RIGHT
-                &kp ESC        &none          &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none          &none          &kp PG_DN    &kp PG_UP        &none
-                                                               &none           &kp LGUI                 &none          &none 
+                &kp TAB        &kp ESC        &kp C_PREV       &kp C_PP        &kp C_FF                 &kp LS(TAB)    &kp TAB        &none        &kp DEL          &kp BSPC
+                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &none                    &none          &kp LEFT       &kp DOWN     &kp UP           &kp RIGHT
+                &none          &none          &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none          &none          &kp PG_DN    &kp PG_UP        &none
+                                                               &none           &none                    &none          &none 
             >;
         };
 
