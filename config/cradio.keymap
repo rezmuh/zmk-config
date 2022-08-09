@@ -57,11 +57,21 @@
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_MT";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        as: alpha_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_SFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };    
     };
 
     keymap {
@@ -71,7 +81,7 @@
             label = "BASE";
             bindings = <
                 &kp Q          &kp W          &kp F        &kp P           &kp B                    &kp J    &kp L        &kp U        &kp Y            &kp SEMI 
-                &am LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &am LSHIFT O
+                &as LSHFT A    &am LCTRL R    &am LALT S   &am LGUI T      &kp G                    &kp M    &am RGUI N   &am LALT E   &am RCTRL I      &as LSHIFT O
                 &kp Z          &kp X          &kp C        &kp D           &kp V                    &kp K    &kp H        &kp COMMA    &kp DOT          &kp SLASH
                                                            &sl NAV         &kp RET                  &kp SPC  &sl SYM
             >;
