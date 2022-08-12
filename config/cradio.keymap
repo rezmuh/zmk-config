@@ -90,19 +90,19 @@
         nav_layer {
             label = "NAV";
             bindings = <
-                &kp TAB        &kp ESC        &kp C_PREV       &kp C_PP        &kp C_FF                 &kp LS(TAB)    &kp TAB        &none        &kp DEL          &kp BSPC
-                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &none                    &none          &kp LEFT       &kp DOWN     &kp UP           &kp RIGHT
-                &none          &none          &kp C_VOL_DN     &kp K_MUTE      &kp C_VOL_UP             &none          &none          &kp PG_DN    &kp PG_UP        &none
-                                                               &none           &none                    &none          &none 
+                &none          &none          &kp C_PREV       &kp C_PP        &kp C_FF                 &kp C_VOL_DN   &kp K_MUTE     &kp C_VOL_UP    &kp DEL          &kp BSPC
+                &kp LSHFT      &kp LCTRL      &kp LALT         &kp LGUI        &kp ESC                  &none          &kp LEFT       &kp DOWN        &kp UP           &kp RIGHT
+                &none          &none          &none            &kp LS(TAB)     &kp TAB                  &none          &none          &kp PG_DN       &kp PG_UP        &none
+                                                               &none           &none                    &none          &none
             >;
         };
 
         sym_layer {
             label = "SYM";
             bindings = <
-                &kp ESC        &none          &none        &none           &none                    &kp SQT      &kp N7       &kp N8       &kp N9           &kp N0 
-                &kp LSHFT      &kp LCTRL      &kp LALT     &kp LGUI        &none                    &kp BSLH     &kp N4       &kp N5       &kp N6           &kp MINUS
-                &none          &none          &none        &kp GRAVE       &kp LBKT                 &kp RBKT     &kp N1       &kp N2       &kp N3           &kp EQUAL
+                &none          &none          &none        &none           &none                    &kp BSLH     &kp N7       &kp N8       &kp N9           &kp N0 
+                &kp LSHFT      &kp LCTRL      &kp LALT     &kp LGUI        &kp LBKT                 &kp BRKT     &kp N4       &kp N5       &kp N6           &kp MINUS
+                &none          &none          &none        &none           &kp GRAVE                &kp SQT      &kp N1       &kp N2       &kp N3           &kp EQUAL
                                                            &none           &none                    &none        &none 
             >;
         };
