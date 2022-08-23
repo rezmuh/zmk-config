@@ -30,7 +30,7 @@
 };
 
 &sk {
-    release-after-ms = <200>;
+    release-after-ms = <100>;
 };
 
 / { 
@@ -57,8 +57,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_MT";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <125>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -67,8 +67,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_SFT";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <125>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };    
