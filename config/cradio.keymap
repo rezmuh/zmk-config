@@ -48,7 +48,7 @@
         compatible = "zmk,combos";
         combo_btclr {
             bindings = <&bt BT_CLR>;
-            key-positons = <20 29>;
+            key-positions = <20 29>;
             layers = <NAV>;  
         }; 
         
