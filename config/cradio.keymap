@@ -45,6 +45,7 @@
     };
 
     combos {
+        compatible = "zmk,combos";
         combo_btclr {
             bindings = <&bt BT_CLR>;
             key-positons = <20 29>;
