@@ -1,0 +1,111 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
+ * Shared keymap for all keyboards in this repo.
+ *
+ * This file is NOT built directly. Each keyboard has a thin shim
+ * (config/<shield>.keymap) that defines the T_BASE / T_NAV / T_SYM macros
+ * with that keyboard's thumb-row bindings, then #includes this file.
+ * Positions 0-29 (the 3x5 rows) are identical on every supported shield;
+ * only the thumb rows differ.
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define BASE 0
+#define NAV 1
+#define SYM 2
+
+
+&mt {
+    //  flavor = "tap-preferred";
+    // tapping_term_ms = <200>;
+};
+
+&sk {
+    release-after-ms = <100>;
+};
+
+/ {
+
+    chosen {
+      zmk,battery = &vbatt;
+    };
+
+    vbatt: vbatt {
+        compatible = "zmk,battery-nrf-vddh";
+        label = "VBATT";
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_btclr {
+            bindings = <&bt BT_CLR>;
+            key-positions = <20 29>;
+            layers = <NAV>;
+        };
+
+        combo_caps_word {
+            bindings = <&caps_word>;
+            key-positions = <4 5>;
+            layers = <BASE>;
+        };
+    };
+
+    behaviors {
+        am: alpha_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_MT";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <125>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+            retro-tap;
+        };
+
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            label = "BASE";
+            bindings = <
+                &kp Q          &kp W          &kp F        &kp P           &kp B                    &kp J    &kp L        &kp U        &kp Y            &kp SEMI
+                &am LGUI A     &am LALT R     &am LCTRL S  &am LSHFT T     &kp G                    &kp M    &am RSHFT N  &am RCTRL E  &am RALT I       &am RGUI O
+                &kp Z          &kp X          &kp C        &kp D           &kp V                    &kp K    &kp H        &kp COMMA    &kp DOT          &kp SLASH
+                T_BASE
+            >;
+        };
+
+        nav_layer {
+            label = "NAV";
+            bindings = <
+                &bt BT_SEL 0   &bt BT_SEL 1   &kp C_PREV       &kp C_PP        &kp C_FF                 &kp C_VOL_DN   &kp K_MUTE     &kp C_VOL_UP    &kp DEL          &kp BSPC
+                &kp LGUI       &kp LALT       &kp LCTRL        &kp LSHFT       &kp ESC                  &none          &kp LEFT       &kp DOWN        &kp UP           &kp RIGHT
+                &none          &none          &none            &kp LS(TAB)     &kp TAB                  &none          &none          &kp PG_DN       &kp PG_UP        &none
+                T_NAV
+            >;
+        };
+
+        sym_layer {
+            label = "SYM";
+            bindings = <
+                &none          &none          &none        &none           &none                    &kp BSLH     &kp N7       &kp N8       &kp N9           &kp N0
+                &kp LGUI       &kp LALT       &kp LCTRL    &kp LSHFT       &kp LBKT                 &kp RBKT     &kp N4       &kp N5       &kp N6           &kp MINUS
+                &none          &none          &none        &none           &kp GRAVE                &kp SQT      &kp N1       &kp N2       &kp N3           &kp EQUAL
+                T_SYM
+            >;
+        };
+
+
+    };
+};

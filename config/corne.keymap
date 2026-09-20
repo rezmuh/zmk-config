@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* Chocofi keymap shim.
+ *
+ * The Chocofi is pin-compatible with the Corne, so it builds with the
+ * corne_left/corne_right shields; the five_column_transform below maps the
+ * corne matrix onto the Chocofi's 36 keys. Positions 0-29 match the Sweep
+ * exactly; the thumb row has 6 keys (30-35) instead of 4, and the outermost
+ * thumbs (30, 35) are unused for now.
+ *
+ * Defines the 6 thumb bindings per layer, then pulls in the shared keymap.
+ * See common.dtsi for all layers, behaviors, and combos.
+
+                 KEY POSITIONS
+
+  ╭────────────────────╮ ╭────────────────────╮
+  │  0   1   2   3   4 │ │  5   6   7   8   9 │
+  │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
+  │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
+  ╰───────╮ 30  31  32 │ │ 33  34  35 ╭───────╯
+          ╰────────────╯ ╰────────────╯          */
+
+/ {
+    chosen {
+        zmk,matrix_transform = &five_column_transform;
+        // keep the physical layout in sync for ZMK Studio support
+        zmk,physical-layout = &foostan_corne_5col_layout;
+    };
+};
+
+#define T_BASE  &none &sl NAV &kp SPC    &kp RET &sl SYM &none
+#define T_NAV   &none &none   &none      &none   &none   &none
+#define T_SYM   &none &none   &none      &none   &none   &none
+
+#include "common.dtsi"
