@@ -28,14 +28,14 @@ just defines three macros with that keyboard's thumb bindings before including
 it:
 
 ```c
-#define T_BASE  &sl NAV &kp SPC    &kp RET &sl SYM      // cradio: 4 thumbs
-#define T_BASE  &none &sl NAV &kp SPC  &kp RET &sl SYM &none  // corne: 6 thumbs
+#define T_BASE  &lt NAV TAB &kp SPC    &kp RET &lt SYM BSPC      // cradio: 4 thumbs
+#define T_BASE  &kp ESC &lt NAV TAB &kp SPC  &kp RET &lt SYM BSPC &kp DEL  // corne: 6 thumbs
 #include "common.dtsi"
 ```
 
 The Chocofi's two extra keys are the **outermost thumb keys (positions 30 and
-35)** and are `&none` for now; the main four thumbs sit on 31/32/33/34, the
-positions equivalent to the Sweep's 30–33.
+35)**; the main four thumbs sit on 31/32/33/34, the positions equivalent to
+the Sweep's 30–33.
 
 > **Naming gotcha:** ZMK picks config files by *shield* name, so the Chocofi's
 > files are `corne.conf` / `corne_left.conf` / `corne_right.conf` — a
@@ -57,7 +57,8 @@ quick-tap).
 │ A ◆ │ R ⎇ │ S ⎈ │ T ⇧ │  G  │   │  M  │ N ⇧ │ E ⎈ │ I ⎇ │ O ◆ │
 │  Z  │  X  │  C  │  D  │  V  │   │  K  │  H  │  ,  │  .  │  /  │
 ╰─────┴─────┼─────┼─────┤     ├─────┼─────┼─────┴─────┴─────╯
-            │ NAV │ SPC │     │ RET │ SYM │
+            │ TAB │ SPC │     │ RET │ BSPC│
+            │ NAV │     │     │     │ SYM │
             ╰─────┴─────╯     ╰─────┴─────╯
 ```
 
@@ -65,7 +66,10 @@ quick-tap).
   GACS order, mirrored: left hand `GUI ALT CTL SFT` (left variants), right
   hand `SFT CTL ALT GUI` (right variants). The NAV and SYM layers keep the
   same mod order on their home rows.
-- `NAV` / `SYM` are sticky layers (`&sl`).
+- `NAV` / `SYM` thumbs are layer-taps (`&lt`): **hold** for the layer, **tap**
+  for the key (TAB / BSPC). 150ms tapping term, matching the home-row mods.
+- On the Chocofi, the outermost thumbs are plain `ESC` (left) and `DEL`
+  (right); the Sweep doesn't have those keys.
 
 ### NAV (hold left thumb)
 
@@ -112,6 +116,8 @@ the broken profile first, then clear, then re-pair.
 |---|---|---|---|
 | Caps Word | positions 4+5 (top inner corners, `B`+`J`) | BASE | `&caps_word` |
 | BT Clear | positions 20+29 (bottom outer corners) | NAV | `&bt BT_CLR` — clears the current BLE profile |
+| ESC | both left thumbs | BASE | Sweep only — the Chocofi has a dedicated ESC thumb |
+| DEL | both right thumbs | BASE | Sweep only — the Chocofi has a dedicated DEL thumb |
 
 ## Build & flash
 
@@ -135,8 +141,7 @@ artifacts from the latest run.
 - **Change keys, layers, behaviors, or combos** → edit `config/common.dtsi`.
   One edit applies to both keyboards on the next build.
 - **Change thumb keys for one keyboard** → edit the `T_*` macros in that
-  keyboard's shim (`cradio.keymap` / `corne.keymap`). To use the Chocofi's
-  outer thumbs, replace the first/last `&none` in its `T_*` macros.
+  keyboard's shim (`cradio.keymap` / `corne.keymap`).
 - **Change radio/power/debounce settings** → edit both `config/cradio.conf`
   and `config/corne.conf` (keep them in sync).
 

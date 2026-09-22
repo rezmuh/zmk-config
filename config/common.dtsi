@@ -33,6 +33,14 @@
     release-after-ms = <100>;
 };
 
+&lt {
+    // Layer-tap thumbs: tap = key, hold = layer.
+    // Tapping term matches `am`; default hold-preferred flavor is kept
+    // deliberately: a slightly slow press should favor the layer.
+    tapping-term-ms = <150>;
+    quick-tap-ms = <125>;
+};
+
 / {
 
     chosen {
@@ -57,6 +65,25 @@
             key-positions = <4 5>;
             layers = <BASE>;
         };
+
+#ifdef SWEEP_THUMB_COMBOS
+        /* Boards without a third thumb key (Sweep) recover ESC/DEL by
+           pressing both thumbs of one hand together. Base layer only.
+           Timeout is deliberately short to avoid firing on fast
+           thumb rolls; bump toward 200 if they feel hard to trigger. */
+        combo_esc {
+            bindings = <&kp ESC>;
+            key-positions = <30 31>;
+            layers = <BASE>;
+            timeout-ms = <100>;
+        };
+        combo_del {
+            bindings = <&kp DEL>;
+            key-positions = <32 33>;
+            layers = <BASE>;
+            timeout-ms = <100>;
+        };
+#endif
     };
 
     behaviors {

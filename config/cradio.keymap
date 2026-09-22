@@ -18,8 +18,12 @@
   ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
               ╰────────╯ ╰────────╯            */
 
-#define T_BASE  &sl NAV &kp SPC    &kp RET &sl SYM
+#define T_BASE  &lt NAV TAB &kp SPC    &kp RET &lt SYM BSPC
 #define T_NAV   &none   &none      &none   &none
 #define T_SYM   &none   &none      &none   &none
+
+/* No third thumb key on this board: pressing both left thumbs = ESC,
+   both right thumbs = DEL (combos defined in common.dtsi). */
+#define SWEEP_THUMB_COMBOS
 
 #include "common.dtsi"

@@ -32,7 +32,7 @@
     };
 };
 
-#define T_BASE  &none &sl NAV &kp SPC    &kp RET &sl SYM &none
+#define T_BASE  &kp ESC &lt NAV TAB &kp SPC    &kp RET &lt SYM BSPC &kp DEL
 #define T_NAV   &none &none   &none      &none   &none   &none
 #define T_SYM   &none &none   &none      &none   &none   &none
 
